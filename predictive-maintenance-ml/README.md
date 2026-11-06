@@ -94,6 +94,7 @@ The EDA workflow includes:
 - Run from the project root with `streamlit run dashboard/app.py`.
 - Anomaly flags are exploratory screening signals, not confirmed failures or RUL model predictions.
 - A **Research & Results** page is available in the Streamlit navigation, with interactive benchmark comparisons, fold-level results, methodology and limitations, and the full manuscript. It reads the checked-in JSON result files under `reports/research_paper/`.
+- For Streamlit Community Cloud, deploy `dashboard/pages/Research & Results.py` as the entrypoint. Its adjacent `dashboard/pages/requirements.txt` lists the page dependencies independently of the full-stack requirements and supports current Cloud Python versions.
 
 ## Research report
 - [`reports/research_paper/manuscript.md`](reports/research_paper/manuscript.md) describes the FD001 baseline and cross-subset grouped-CV experiments, measured results, methods, limitations, and references.
