@@ -1,0 +1,76 @@
+project:
+  name: predictive-maintenance-ml
+  description: Predictive maintenance and remaining useful life estimation for NASA C-MAPSS turbofan engines.
+  python_version: "3.11"
+  random_seed: 42
+
+paths:
+  project_root: .
+  data_raw: data/raw
+  data_processed: data/processed
+  data_external: data/external
+  models: models
+  reports: reports
+  notebooks: notebooks
+
+cmapss:
+  file_prefixes:
+    - train_FD001.txt
+    - test_FD001.txt
+    - RUL_FD001.txt
+    - train_FD002.txt
+    - test_FD002.txt
+    - RUL_FD002.txt
+    - train_FD003.txt
+    - test_FD003.txt
+    - RUL_FD003.txt
+    - train_FD004.txt
+    - test_FD004.txt
+    - RUL_FD004.txt
+  source_urls:
+    - https://zenodo.org/records/15346912
+    - https://data.nasa.gov/dataset/cmapss-jet-engine-simulated-data
+
+columns:
+  engine_id: engine_id
+  cycle: cycle
+  operational_settings: [setting_1, setting_2, setting_3]
+  sensors:
+    - sensor_1
+    - sensor_2
+    - sensor_3
+    - sensor_4
+    - sensor_5
+    - sensor_6
+    - sensor_7
+    - sensor_8
+    - sensor_9
+    - sensor_10
+    - sensor_11
+    - sensor_12
+    - sensor_13
+    - sensor_14
+    - sensor_15
+    - sensor_16
+    - sensor_17
+    - sensor_18
+    - sensor_19
+    - sensor_20
+    - sensor_21
+
+validation:
+  expected_columns_count: 26
+  min_rows_per_engine: 5
+  rul_threshold_default: 125
+  rul_threshold_candidates: [60, 80, 100, 125, 150, 200]
+
+ml:
+  group_column: engine_id
+  target_column: rul
+  validation_strategy: engine_group_aware_cv
+
+tracking:
+  backend: mlflow
+  tracking_uri: ./mlruns
+  experiment_name: cmapss-rul-prediction
+  model_artifact_path: model

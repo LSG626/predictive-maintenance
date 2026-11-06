@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+*.zip
+*.tar.gz
+*.gz
+*.csv
+*.txt
+!requirements.txt
+!README.md
+
+# Model artefacts
+models/saved/*.pkl
+models/saved/*.joblib
+models/checkpoints/*
+
+# MLflow / reports
+mlruns/
+reports/**/*.png
+reports/**/*.svg
+reports/**/*.html
+
+# OS
+.DS_Store
+Thumbs.db
